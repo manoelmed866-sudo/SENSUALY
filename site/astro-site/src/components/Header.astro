@@ -1,0 +1,51 @@
+---
+import { BRAND, whatsappLink } from '../consts';
+---
+
+<header class="site-header">
+  <div class="container bar">
+    <a href="#topo" class="brand">{BRAND.nome}</a>
+    <nav class="nav">
+      <a href="#frentes">Coleções</a>
+      <a href="#destaques">Destaques</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a href={whatsappLink()} class="btn btn-primary btn-sm" target="_blank" rel="noopener">
+      WhatsApp
+    </a>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--cream) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+  .brand {
+    font-family: var(--font-script);
+    font-size: clamp(1.5rem, 5vw, 1.9rem);
+    line-height: 1;
+  }
+  .nav {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+  .nav a:hover { color: var(--ink); }
+  .btn-sm { padding: 0.5rem 1.1rem; font-size: 0.85rem; }
+
+  @media (max-width: 720px) {
+    .nav { display: none; }
+  }
+</style>

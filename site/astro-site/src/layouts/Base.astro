@@ -1,0 +1,77 @@
+---
+import '../styles/global.css';
+import { BRAND } from '../consts';
+
+interface Props {
+  titulo?: string;
+  descricao?: string;
+}
+
+const {
+  titulo = `${BRAND.nome} — ${BRAND.tagline}`,
+  descricao = BRAND.descricao,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{titulo}</title>
+    <meta name="description" content={descricao} />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descricao} />
+    <meta property="og:type" content="website" />
+
+    <!-- Fontes da marca -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&family=Parisienne&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+    <script>
+      // Bloqueia cópia de texto/elementos e zoom — pedido de proteção de conteúdo do site.
+      document.addEventListener('contextmenu', (e) => e.preventDefault());
+      document.addEventListener('copy', (e) => e.preventDefault());
+      document.addEventListener('cut', (e) => e.preventDefault());
+      document.addEventListener('selectstart', (e) => e.preventDefault());
+      document.addEventListener('dragstart', (e) => e.preventDefault());
+
+      // Zoom por scroll + Ctrl (desktop)
+      window.addEventListener(
+        'wheel',
+        (e) => {
+          if (e.ctrlKey) e.preventDefault();
+        },
+        { passive: false }
+      );
+
+      // Zoom por teclado (Ctrl/Cmd + "+"/"-"/"0")
+      window.addEventListener('keydown', (e) => {
+        const tecla = e.key;
+        if ((e.ctrlKey || e.metaKey) && ['+', '-', '=', '0'].includes(tecla)) {
+          e.preventDefault();
+        }
+      });
+
+      // Pinça de zoom (mobile / trackpad com gesto)
+      document.addEventListener(
+        'touchmove',
+        (e) => {
+          if (e.touches.length > 1) e.preventDefault();
+        },
+        { passive: false }
+      );
+      document.addEventListener('gesturestart', (e) => e.preventDefault());
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+---
+import { BRAND, INSTAGRAM, whatsappLink } from '../consts';
+const ano = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container grid">
+    <div>
+      <p class="brand">{BRAND.nome}</p>
+      <p class="muted">{BRAND.tagline}</p>
+    </div>
+    <div class="links">
+      <a href={whatsappLink()} target="_blank" rel="noopener">WhatsApp</a>
+      <a href={INSTAGRAM.principal.url} target="_blank" rel="noopener">{INSTAGRAM.principal.handle}</a>
+      <a href={INSTAGRAM.presentes.url} target="_blank" rel="noopener">{INSTAGRAM.presentes.handle}</a>
+      <a href={INSTAGRAM.sport.url} target="_blank" rel="noopener">{INSTAGRAM.sport.handle}</a>
+    </div>
+  </div>
+  <div class="container copy">
+    <span class="muted">© {ano} Sensually</span>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 56px 0 28px;
+  }
+  .grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(246, 241, 233, 0.15);
+  }
+  .brand { font-family: var(--font-script); font-size: 2rem; line-height: 1; }
+  .muted { color: rgba(246, 241, 233, 0.6); font-size: 0.9rem; }
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.92rem;
+  }
+  .links a:hover { color: rgba(246, 241, 233, 0.7); }
+  .copy { padding-top: 1.5rem; font-size: 0.82rem; }
+</style>

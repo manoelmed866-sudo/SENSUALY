@@ -1,0 +1,98 @@
+---
+import { PRODUTOS, descontoPercentual, formatoReais, whatsappLink } from '../consts';
+---
+
+<section id="vitrine" class="vitrine">
+  <div class="container">
+    <div class="head">
+      <p class="eyebrow">Lançamentos</p>
+      <h2 class="title-serif">Vitrine</h2>
+    </div>
+
+    <div class="grid">
+      {PRODUTOS.map((p) => {
+        const desconto = descontoPercentual(p);
+        const precoPix = formatoReais(p.preco);
+        const mensagem = `Oi! Vim pelo site da Sensually e quero saber sobre "${p.nome}" 💛`;
+        return (
+          <div class="card">
+            <div class="img-wrap">
+              <img src={p.foto} alt={p.nome} width="400" height="500" loading="lazy" />
+              {desconto && <span class="badge badge-desconto">-{desconto}%</span>}
+              {p.ultimaPeca && <span class="badge badge-ultima">Última peça</span>}
+            </div>
+            <div class="info">
+              <h3 class="nome">{p.nome}</h3>
+              <div class="precos">
+                {p.precoDe && <span class="preco-de">{formatoReais(p.precoDe)}</span>}
+                <span class="preco">{precoPix}</span>
+              </div>
+              <p class="parcelamento">ou 2x sem juros · {precoPix} no Pix</p>
+              <a href={whatsappLink(mensagem)} class="btn btn-primary btn-card" target="_blank" rel="noopener">
+                Comprar pelo WhatsApp
+              </a>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .vitrine { background: var(--cream-soft); }
+  .head { text-align: center; margin-bottom: 3rem; }
+  .head h2 { font-size: clamp(2rem, 5vw, 2.8rem); margin-top: 0.5rem; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .img-wrap {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+  }
+  .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+  .badge {
+    position: absolute;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    color: var(--cream);
+  }
+  .badge-desconto { top: 0.7rem; left: 0.7rem; background: var(--ink); }
+  .badge-ultima { top: 0.7rem; right: 0.7rem; background: var(--ink-soft); }
+
+  .info { padding: 1.1rem 1.2rem 1.3rem; }
+  .nome { font-size: 1.05rem; font-weight: 500; margin-bottom: 0.5rem; }
+
+  .precos { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 0.2rem; }
+  .preco-de { text-decoration: line-through; color: var(--ink-soft); font-size: 0.88rem; }
+  .preco { font-size: 1.2rem; font-weight: 600; }
+
+  .parcelamento { color: var(--ink-soft); font-size: 0.85rem; font-weight: 300; margin-bottom: 1rem; }
+
+  .btn-card { width: 100%; justify-content: center; padding: 0.7rem 1rem; font-size: 0.88rem; }
+
+  @media (max-width: 820px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
