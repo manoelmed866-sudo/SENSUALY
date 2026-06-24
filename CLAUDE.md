@@ -113,3 +113,70 @@ Quando o usuário pedir skill nova:
 4. Se a skill precisar de arquivos de apoio (templates, exemplos),
    criar dentro da pasta da skill
 5. Seguir o fluxo da skill-creator nativa do Claude Code
+
+---
+
+# Sensually — perfil do negócio
+
+> Bloco adicionado pelo `/instalar` (perfil: Empresa). Adaptado à realidade da
+> Sensually — loja de moda enxuta, operada por ~2 pessoas. Setores existem como
+> frentes de trabalho, não como departamentos grandes.
+
+## O que é esse workspace
+
+Operação digital da **Sensually**, loja de moda e acessórios de Oriximiná-PA.
+O sistema gira em torno de marketing/conteúdo, presença nas redes e venda via
+WhatsApp.
+
+**Estrutura de pastas:**
+- `_memoria/` — quem é a empresa, como falamos, foco atual
+- `identidade/` — marca aplicada em tudo que o sistema gera
+- `marketing/` — campanhas, conteúdo, carrosséis, mídia paga
+- `dados/` — arquivos e catálogo a analisar
+- `saidas/` — documentos e entregas pontuais
+- `scripts/` — automações
+- `templates/` — moldes de skills, perfis e identidade
+
+## Sobre a empresa
+
+Sensually é uma **loja de varejo de moda** (roupas, acessórios, fitness,
+presentes). Atende o público de Oriximiná-PA e clientes por encomenda. Operada
+por cerca de 2 pessoas. Marca com 3 frentes: principal (@oficialsensually),
+presentes (@sensually_presentes) e esporte (@sensuallysport).
+
+## Frentes de trabalho
+
+- **Marketing/Conteúdo:** posts, carrosséis e vídeos para Instagram e TikTok.
+- **Comercial/Vendas:** atendimento e fechamento via WhatsApp.
+- **Tráfego/ADS:** estruturação e gestão de anúncios (a desenvolver).
+
+## O que mais fazemos aqui
+
+- Carrosséis e vídeos para Instagram e TikTok
+- Levantamento e divulgação de catálogo
+- Campanhas e mídia paga
+
+## Tom de voz
+
+Moderno, leve e convidativo — o objetivo é dar vontade de olhar a página, sem
+pressão de venda. Ver `_memoria/preferencias.md`.
+
+Evitar: linguagem de guru, apelo agressivo de venda, formalidade fria, clichê de
+varejo barato.
+
+## Regras do sistema
+
+- Grafia oficial da marca: **Sensually** (dois L).
+- Conteúdo e campanhas ficam em `marketing/`.
+- Toda peça visual lê `identidade/design-guide.md` antes de ser criada.
+- Entregas pontuais vão pra `saidas/`.
+
+## Ferramentas conectadas
+
+- [ ] Instagram / Meta (Graph API)
+- [ ] TikTok
+- [ ] WhatsApp
+- [ ] Meta Ads
+- [ ] Google Ads
+
+*(Marcar conforme for instalando os MCPs)*
